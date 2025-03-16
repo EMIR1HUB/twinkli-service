@@ -1,0 +1,15 @@
+spring:
+  application:
+    name: twinkli-service
+
+server:
+  address: 0.0.0.0
+  port: 8081
+
+api:
+  service:
+    frontend: ${TWINKLI_FRONTEND:https://localhost:4200}
+
+telegram:
+  bot:
+    token: ${BOT_TOKEN:test_token}
