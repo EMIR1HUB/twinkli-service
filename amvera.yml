@@ -14,4 +14,4 @@ run:
   jarName: twinkli-service-0.0.1-SNAPSHOT.jar
   persistenceMount: /data
   containerPort: 8081 # Приложение слушает порт 8081 внутри контейнера
-  servicePort: 8081  # Внешний порт 80, доступ извне
+#  servicePort: 8081  # Внешний порт 80, доступ извне
