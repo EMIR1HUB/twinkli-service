@@ -6,7 +6,7 @@ meta:
     version: 17
 build:
   image: null
-  args: clean package
+  args: spring-boot:repackage -DskipTests
   artifacts:
     target/*.jar: /
 run:
