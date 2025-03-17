@@ -6,7 +6,7 @@ meta:
     version: 17
 build:
   image: null
-  args: spring-boot:repackage
+  args: clean package
   artifacts:
     target/*.jar: /
 run:
