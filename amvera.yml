@@ -5,7 +5,7 @@ meta:
     name: maven
     version: 17
 build:
-  image: image
+  image: null
   args: spring-boot:repackage
   artifacts:
     target/*.jar: /
