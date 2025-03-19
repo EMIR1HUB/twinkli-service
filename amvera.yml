@@ -1,17 +1,14 @@
-version: null
 meta:
   environment: jvm
   toolchain:
     name: maven
     version: 17
 build:
-  image: image
-  args: spring-boot:repackage
+  args: spring-boot:repackage -DskipTests
   artifacts:
-    build/libs/*.jar: /
+    target/*.jar: /
 run:
-  image: image
   jarName: twinkli-service-0.0.1-SNAPSHOT.jar
   persistenceMount: /data
-  containerPort: 8081 # Приложение слушает порт 8081 внутри контейнера
-  servicePort: 80  # Внешний порт 80, доступ извне
+  containerPort: 8080 # Приложение слушает порт 8081 внутри контейнера
+#  servicePort: 8080  # Внешний порт 80, доступ извне
