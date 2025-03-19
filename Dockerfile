@@ -1,0 +1,16 @@
+# Сборка
+FROM maven:3.9.6-eclipse-temurin-17 AS build
+WORKDIR /app
+COPY pom.xml .
+RUN mvn dependency:go-offline
+COPY src ./src
+RUN mvn clean package -T 2C -DskipTests
+
+# Легковесный рантайм
+FROM eclipse-temurin:17-jre-alpine
+WORKDIR /app
+
+COPY --from=build /app/target/*.jar /app/twinkli-service.jar
+
+EXPOSE 8080
+ENTRYPOINT ["java", "-jar", "/app/twinkli-service.jar"]
