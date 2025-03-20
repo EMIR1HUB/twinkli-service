@@ -23,8 +23,12 @@ public class ValidationController {
   @Value("${telegram.bot.token}")
   private String BOT_TOKEN;
 
+  @Value("${api.service.frontend}")
+  private String FRONTEND_URL;
+
   @PostMapping("/validation")
   public ResponseEntity<Map<String, Object>> validateUser(@RequestBody String[] verifiableData) {
+    LOGGER.info("INFO: frontend url: " + FRONTEND_URL);
     LOGGER.info("INFO: BOT_TOKEN receive: " + BOT_TOKEN);
     if (verifiableData.length != 2 || verifiableData[0].isBlank() || verifiableData[1].isBlank()) {
       return ResponseEntity.badRequest().body(Map.of("success", false, "error", "Verifiable data empty"));
