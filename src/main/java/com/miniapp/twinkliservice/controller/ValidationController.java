@@ -26,6 +26,8 @@ public class ValidationController {
   @Value("${api.service.frontend}")
   private String FRONTEND_URL;
 
+  private final String PUBLIC_KEY = "WebAppData";
+
   @PostMapping("/validation")
   public ResponseEntity<Map<String, Object>> validateUser(@RequestBody String[] verifiableData) {
     LOGGER.info("INFO: frontend url: " + FRONTEND_URL);
@@ -39,7 +41,7 @@ public class ValidationController {
       String hash = verifiableData[1];
       LOGGER.info("INFO: dataCheckString: {} \nhash: {}", dataCheckString, hash);
       byte[] secretKey = HmacUtil.hmacSha256Raw(
-          BOT_TOKEN.getBytes(StandardCharsets.UTF_8), "WebAppData".getBytes(StandardCharsets.UTF_8)
+          BOT_TOKEN.getBytes(StandardCharsets.UTF_8), PUBLIC_KEY.getBytes(StandardCharsets.UTF_8)
       );
       String checkHashHex = HmacUtil.hmacSha256Hex(dataCheckString.getBytes(StandardCharsets.UTF_8), secretKey);
       Map<String, Object> response = new HashMap<>();

@@ -8,7 +8,7 @@ server:
 
 api:
   service:
-    frontend: ${TWINKLI_FRONTEND:https://localhost:4200}
+    frontend: ${TWINKLI_FRONTEND:http://localhost:4200,https://6w50slcv-4200.euw.devtunnels.ms}
 
 telegram:
   bot:
